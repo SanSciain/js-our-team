@@ -31,23 +31,11 @@ const team = [
     },
 ];
 
-// NON FUNZIONA :C
+
 
 for (let i=0; i<team.length;i++){
     const container = document.querySelector(".team-container");
-    const card = createCard()[0];
-    const imageTag = createCard()[1];
-    const infoName = createCard()[2];
-    const infoRole = createCard()[3];
-    let person = team[i];
-    imageTag.setAttribute("src",`img/${person.image}`);
-    infoName.innerHTML = person.name;
-    infoRole.innerHTML = person.role;
 
-    container.append(card);
-}
-
-function createCard(){
     const card = document.createElement("div");
     card.classList.add("team-card");
     const cardImage = document.createElement("div");
@@ -57,8 +45,15 @@ function createCard(){
     cardText.classList.add("card-text");
     const infoName = document.createElement("h3");
     const infoRole = document.createElement("p");
+
     card.append(cardImage,cardText);
     cardImage.append(imageTag);
     cardText.append(infoName,infoRole);
-    return [card,imageTag,infoName,infoRole];
+
+    let person = team[i];
+    imageTag.setAttribute("src",`img/${person.image}`);
+    infoName.innerHTML = person.name;
+    infoRole.innerHTML = person.role;
+    container.append(card);
 }
+
